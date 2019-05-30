@@ -1,0 +1,24 @@
+1. For arrays, prepending is much slower than appending.
+
+	list -> 100 0 10000 0
+	array -> 100 0 10000 0
+
+	Expected: Array to be much slower than the list wile prepending
+	Results: 
+		list = 0.07s
+		array = 0.44s
+	Analysis: Array is 5 times slower in prepending than lists.
+
+
+2. For lists, prepending and appending are roughly the same speed.
+
+
+
+3. Prepending is much faster in the list implementation than in the array implementation.
+
+
+
+4. Appending is roughly the same speed for both implementations.
+
+
+
