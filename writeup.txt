@@ -3,12 +3,41 @@ CS 320 - HW 6
 Spring 2019
 _________________
 
+-------------
 Question 1:
+--------------
 
-lab 7.11
+Tests 1 and 2 behave the same. The sum is applied in both cases and 
+since the int type stored in b goes over the range, the overflow wraps around a negative number. Then it evaluates the conditional, and logically a is > than b. In this case, the program acts line by line ignoring the expected behavior. 
 
+Test 3, correspond to the undefined behavior of signed integer overflow in 
+C++ semantics. It takes step into the conditional knowing before hand 
+about the arithmetic overflow that ocurred in line 5. Therefore, its behavior is undefined in c++. 
+
+Tests 2 and 3 are example of UB in C++ 
+
+Java has no undefined behavior, it will always treat the arithmetic overflow this way. In this case, the language specifies that the arithmetic
+overflow in a 32 bit integer will go from the biggest number possible to 
+the lowest, creating a problem in this environment. Java 
+does not throw an exception in this case. Only debugging programmers may 
+find the unexpected behavior. 
+
+Testing:
+**********************************
+java Example 2000000000  
+2000000000 > -294967296   (1)
+
+./Example 2000000000     --- with O0
+2000000000 > -294967296   (2)
+
+./Example 2000000000     --- with O2
+2000000000 <= -294967296  (3)
+*************************************
+
+------------
 Question 2:
+--------------
 
-lab 8.4
+
 
 
