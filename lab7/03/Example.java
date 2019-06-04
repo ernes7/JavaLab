@@ -9,8 +9,14 @@ class Example {
       } catch (NumberFormatException e) {
         usage();
       }
-      for (int i = 0; i < n; i++) {
-        System.out.println(i +  ": " + argv[1]);
+      String arguments = argv[1]; // create string
+      for(int k = 2; k < argv.length; k++) // concatenate all arguments
+      {
+        arguments = arguments + " " + argv[k];
+      }
+      for (int i = 0; i < n; i++) 
+      {
+          System.out.println(i +  ": " + arguments);
       }
     }
   }
