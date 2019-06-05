@@ -1,24 +1,98 @@
+array/list - repeat - append - prepend - reads
+
+****************************************************
 1. For arrays, prepending is much slower than appending.
 
-	list -> 100 0 10000 0
-	array -> 100 0 10000 0
+Expected: Following this claim, prepending may be much slower than appending 
+for arrays due to it is behavior. 
 
-	Expected: Array to be much slower than the list wile prepending
-	Results: 
-		list = 0.07s
-		array = 0.44s
-	Analysis: Array is 5 times slower in prepending than lists.
+array - 10000 500 0   500 [ Appending ]
 
+real	0m0.074s
+user	0m0.109s
+sys	0m0.024s
+
+
+array - 10000 0   500 500 [ Prepending ]
+
+real	0m0.147s
+user	0m0.174s
+sys	0m0.019s
+
+Analysis: This claim is TRUE. Prepending in arrays is slower than appending but
+not for much. Its not 5x slower. Approx 2x slower. 
+
+
+******************************************************
 
 2. For lists, prepending and appending are roughly the same speed.
 
+Expected: There is no a big gap in the performance of the implemenatio in lists between
+appending and prepending. Therefore this claim must be true. Even closer than the 
+difference in arrays.
 
+list - 10000 500 0   500 [ Appending ]
+
+real	0m1.442s
+user	0m1.475s
+sys	0m0.016s
+
+list - 10000 0   500 500 [ Prepending ]
+
+real	0m1.428s
+user	0m1.463s
+sys	0m0.024s
+
+Analysis: Claim is TRUE. Roughly the same speed for both. 
+
+*********************************************************
 
 3. Prepending is much faster in the list implementation than in the array implementation.
 
+list  - 10000 0 500 500 [ Prepending ]
 
+Expected: In the lab example, we saw a similar problem with appending. Due to the 
+implemenation of lists, I would guess that the times in prepending will be similar for both
+since for appending arrays are much faster. 
+
+real	0m1.453s
+user	0m1.466s
+sys	0m0.036s
+
+array - 10000 0 500 500 [ Prepending ]
+
+real	0m0.143s
+user	0m0.192s
+sys	0m0.012s
+
+Analysis: Prepending for lists is 10x slower than prepending for arrays. The claim is FALSE. 
+
+***********************************************************
 
 4. Appending is roughly the same speed for both implementations.
 
+list - 10000 500 0 500 [ Appending ]
 
+Expected: In the lab example, appending in list was almost 10x slower than appending
+in arrays. I expect this claim to be false and get the results similar to the lab example.
+
+real	0m1.449s
+user	0m1.472s
+sys	0m0.028s
+
+array - 10000 500 0 500 [ Appending ]
+
+real	0m0.074s
+user	0m0.126s
+sys	0m0.008s
+
+Analysis: As expected. The claim is FALSE. Appending for arrays is 10x faster than appending 
+for lists.
+
+***************************************************************
+ENVIRONMENT:
+openjdk 11.0.3 2019-04-16
+OpenJDK Runtime Environment (build 11.0.3+7-Ubuntu-1ubuntu218.04.1)
+OpenJDK 64-Bit Server VM (build 11.0.3+7-Ubuntu-1ubuntu218.04.1, mixed mode, sharing)
+*****************************************************************************8
 
